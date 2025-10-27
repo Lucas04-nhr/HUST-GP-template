@@ -1,5 +1,5 @@
-# Initial release notes
+## Function updates
 
-- Initial release of HUST-GP-template.
-- Added support for automated release workflow using GitHub Actions.
-- Implemented versioning and artifact upload features in the release process.
+## Other updates
+
+- Fix auto-release workflow to exclude CHANGELOG, LICENSE, README.md, and ROADMAP.md from the zip file.
