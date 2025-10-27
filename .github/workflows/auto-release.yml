@@ -51,7 +51,7 @@ jobs:
           allowUpdates: true
           tag: ${{ steps.tag_version.outputs.VERSION }}
           name: ${{ steps.tag_version.outputs.VERSION }}
-          bodyFile: release-notes.md
+          bodyFile: CHANGELOG
           draft: false
           prerelease: ${{ contains(steps.tag_version.outputs.VERSION, 'beta') || contains(steps.tag_version.outputs.VERSION, 'alpha') || contains(steps.tag_version.outputs.VERSION, 'rc') }}
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -59,7 +59,7 @@ jobs:
       - name: Notify release created
         run: |
           echo "✅ Successfully created release ${{ steps.tag_version.outputs.VERSION }}"
-          echo "📝 Release notes sourced from release-notes.md"
+          echo "📝 Release notes sourced from CHANGELOG"
           echo "🔗 Release URL: https://github.com/${{ github.repository }}/releases/tag/${{ steps.tag_version.outputs.VERSION }}"
 
   upload-artifacts:
