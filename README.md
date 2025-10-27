@@ -1,4 +1,4 @@
-# 适用于 HUST 的本科毕业论文 $\LaTeX$ 模板
+# 适用于 HUST 的本科毕业论文 LaTeX 模板
 
 ## 前言
 
@@ -8,12 +8,12 @@
 
 ## 使用说明
 
-### 先决条件
-
 > [!NOTE]
 > - 本模板基于 $\LaTeX$ 制作，如需使用建议先行学习相关知识。
 > - 软件及字体的安装教程不在此赘述，可参考网络资源。
-> - 如果在大二的 R 语言课程中使用 R Markdown 编写过实验报告并且后期没有卸载过 TinyTeX，那么你已经具备了使用本模板的基本环境。
+> - 如果在生命学院大二开设的 R 语言课程中使用 R Markdown 编写过实验报告并且后期没有卸载过 TinyTeX，那么你已经具备了使用本模板的基本环境。
+
+### 先决条件
 
 - 安装 $\LaTeX$ 发行版（推荐使用由 Yihui Xie 维护的 [TinyTeX](https://yihui.org/tinytex/)）。
 - 安装 $\LaTeX$ 编辑器（推荐使用 [TeX Studio](https://www.texstudio.org/)）。
