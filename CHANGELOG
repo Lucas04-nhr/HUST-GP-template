@@ -1,1 +1,5 @@
-Initial release.
+# Initial release notes
+
+- Initial release of HUST-GP-template.
+- Added support for automated release workflow using GitHub Actions.
+- Implemented versioning and artifact upload features in the release process.
