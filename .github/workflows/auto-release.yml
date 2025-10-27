@@ -1,0 +1,110 @@
+name: Auto Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*" # 当推送以 'v' 开头的标签时触发
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.tag_version.outputs.VERSION }}
+      release_body: ${{ steps.release_notes.outputs.RELEASE_BODY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 获取完整历史记录
+
+      - name: Extract tag version
+        id: tag_version
+        run: |
+          echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          echo "VERSION_NUMBER=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Read release notes
+        id: release_notes
+        run: |
+          if [ -f "CHANGELOG" ]; then
+            echo "RELEASE_NOTES_EXIST=true" >> $GITHUB_OUTPUT
+            # 将多行内容转换为环境变量
+            {
+              echo "RELEASE_BODY<<EOF"
+              cat release-notes.md
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+          else
+            echo "RELEASE_NOTES_EXIST=false" >> $GITHUB_OUTPUT
+            echo "RELEASE_BODY=Release ${{ steps.tag_version.outputs.VERSION }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          tag: ${{ steps.tag_version.outputs.VERSION }}
+          name: ${{ steps.tag_version.outputs.VERSION }}
+          bodyFile: release-notes.md
+          draft: false
+          prerelease: ${{ contains(steps.tag_version.outputs.VERSION, 'beta') || contains(steps.tag_version.outputs.VERSION, 'alpha') || contains(steps.tag_version.outputs.VERSION, 'rc') }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify release created
+        run: |
+          echo "✅ Successfully created release ${{ steps.tag_version.outputs.VERSION }}"
+          echo "📝 Release notes sourced from release-notes.md"
+          echo "🔗 Release URL: https://github.com/${{ github.repository }}/releases/tag/${{ steps.tag_version.outputs.VERSION }}"
+
+  upload-artifacts:
+    needs: create-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Zip the source code
+        run: |
+          VERSION=${{ needs.create-release.outputs.version }}
+          zip -r template-$VERSION.zip . -x "*.git*" "*.github*"
+
+      - name: Upload release assets
+        if: success()
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ needs.create-release.outputs.version }}
+          artifacts: "template-${{ needs.create-release.outputs.version }}.zip"
+          allowUpdates: true
+          omitBodyDuringUpdate: true
+          omitNameDuringUpdate: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify build completion
+        run: |
+          echo "✅ Successfully upload the artifact."
+          echo "🔗 Release URL: https://github.com/${{ github.repository }}/releases/tag/${{ needs.create-release.outputs.version }}"
+
+  notify-completion:
+    needs: [create-release, upload-artifacts]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Notify success
+        if: needs.upload-artifacts.result == 'success'
+        run: |
+          echo "🎉 Release ${{ needs.create-release.outputs.version }} completed successfully!"
+          echo "✅ All artifacts have been uploaded"
+          echo "🔗 Release URL: https://github.com/${{ github.repository }}/releases/tag/${{ needs.create-release.outputs.version }}"
+
+      - name: Notify failure
+        if: needs.upload-artifacts.result == 'failure'
+        run: |
+          echo "❌ Failed to complete release ${{ needs.create-release.outputs.version }}"
+          echo "Please check the workflow logs for details"
