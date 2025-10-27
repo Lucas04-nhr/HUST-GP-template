@@ -72,7 +72,7 @@ jobs:
       - name: Zip the source code
         run: |
           VERSION=${{ needs.create-release.outputs.version }}
-          zip -r template-$VERSION.zip . -x "*.git*" "*.github*"
+          zip -r template-$VERSION.zip . -x "*.git*" "*.github*" "CHANGELOG" "LICENSE" "README.md" "ROADMAP.md"
 
       - name: Upload release assets
         if: success()
