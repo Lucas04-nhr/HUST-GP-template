@@ -1,0 +1,37 @@
+%!TEX program = xelatex
+\documentclass[UTF8]{article}
+\usepackage[UTF8]{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage{hust_gp}
+\bibliography{reference.bib}
+\pagestyle{fancy}
+\cfoot{\thepage}
+% \geometry{a4paper,left=2.8cm,right=2.8cm,top=3cm,bottom=2.5cm}
+\geometry{b5paper,left=1.4cm,right=1.4cm,top=2.3cm,bottom=2cm}
+
+
+\title{\oldincludegraphics[width=0.4\textwidth]{fig/logo.png}  \\ \bigskip \Huge\textbf{本科毕业设计[论文]}}
+\author{}
+\date{}
+
+\begin{document}
+	\pagenumbering{Roman}
+	\include{cover}
+	\setcounter{page}{1}
+	\tableofcontents
+
+	% \newpage
+	% \thispagestyle{empty}
+	% \mbox{}
+
+	\newpage
+	\setcounter{page}{1}
+	\pagenumbering{arabic}
+
+
+	\newpage
+	\printbibliography
+	% \bibliographystyle{unsrt}
+	% \bibliography{reference}
+
+\end{document}

@@ -1,0 +1,22 @@
+# LaTeX intermediate and output files
+_minted
+*.pdf
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xml
+*.bbl
+*.blg
+*.bcf
+
+# macOS specific files
+.DS_Store
+Thumbs.db
+._*
+
+# Backup files
+*.bak

@@ -1,0 +1,148 @@
+% Include the packages
+\usepackage[UTF8]{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage{titling}
+\usepackage{subfig}
+\usepackage{enumerate}
+% \usepackage[graphicx]{realboxes}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{graphics}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\renewcommand{\labelenumii}{\theenumii)}
+\usepackage{tikz}
+
+% Page Setup
+\pagestyle{fancy}
+\geometry{a4paper,left=2.8cm,right=2.8cm,top=3cm,bottom=2.5cm}
+\chead{华中科技大学毕业设计（论文）}
+\usepackage[fontsize=0.05\paperwidth]{draftwatermark}
+\SetWatermarkText{}
+
+% Define Subtitle layout
+\makeatletter
+\newcommand{\subtitle}[1]{%
+	\gdef\@subtitle{#1}%
+	\posttitle{%
+		\par\vspace{0.5em}%
+		{\centering\Large #1 \par}%
+		\vspace{0.5em}}%
+}
+\makeatother
+
+% Define TikZ block styles
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+\tikzstyle{process} = [thick, rectangle, rounded corners, minimum width=1.5cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{edge} = [thick, rounded corners, draw, dashed, rectangle, inner sep=10pt]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{twowayarrow} = [thick,<->,>=stealth]
+
+
+% Set default figure placement to center
+\let\oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{
+    \begin{center}
+      \oldincludegraphics[#1]{#2}
+    \end{center}
+  }
+
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\newcommand{\mygraphics}[1]{\includegraphics[width=0.6\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicssmall}[1]{\includegraphics[width=0.4\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicstwocols}[1]{\includegraphics[width=0.25\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicsthreecols}[1]{\includegraphics[width=0.15\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicsfourcols}[1]{\includegraphics[width=0.1\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicssubfig}[1]{\includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicssubsubfig}[1]{\includegraphics[width=0.2\textwidth,height=\textheight,keepaspectratio]{#1}}
+
+% Define Figure Caption Style
+\newcommand{\piccncaption}[1]{%
+  \addtocounter{figure}{1}
+  \small
+  \begin{center}
+    \textbf{图 \thefigure:} #1
+  \end{center}
+}
+
+\newcommand{\picencaption}[1]{%
+  \small
+  \begin{center}
+    \textbf{Figure \thefigure:} #1
+  \end{center}
+}
+
+\newcommand{\txtcaption}[1]{%
+  \small
+  \begin{center}
+    #1
+  \end{center}
+}
+
+% Define Table Caption Style
+\newcommand{\tbcncaption}[1]{%
+  \addtocounter{table}{1}
+  \small
+  \begin{center}
+    \textbf{表 \thetable:} #1
+  \end{center}
+}
+
+\newcommand{\tbencaption}[1]{%
+  \small
+  \begin{center}
+    \textbf{Table \thetable:} #1
+  \end{center}
+}
+
+% Change CTEX numbering
+\renewcommand{\thesection}{\chinese{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+\renewcommand{\bfdefault}{bx}
+
+% Change font
+\setmainfont{Times New Roman}[AutoFakeSlant=0.3]
+\setCJKmainfont{FandolSong}[AutoFakeSlant=0.3]
+% \setmainfont{Noto Serif}
+% \setCJKmainfont{Noto Serif SC}
+\setCJKsansfont{FandolHei}[AutoFakeSlant=0.3]
+\setmonofont{Maple Mono NF CN}[Contextuals=Alternate]
+
+
+% Add custom command
+\newcommand{\lineB}{\begin{center}\rule{\linewidth}{0.5pt}\end{center}}
+
+% minted style
+\renewcommand{\theFancyVerbLine}{\ttfamily\small\arabic{FancyVerbLine}}
+\setminted{
+	tabsize=2,
+	bgcolor=gray!10,
+	linenos,
+	numbersep=5pt,
+	breaklines,
+	breakanywhere=true,
+	fontsize=\small
+	}
+
+% Change bib style
+% Biblography
+\usepackage{bib}

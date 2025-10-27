@@ -1,0 +1,57 @@
+% Biblography
+\usepackage[style=numeric, sorting=none, backend=biber]{biblatex}
+\DefineBibliographyStrings{english}{references = {参考文献}}
+\DeclareNameAlias{default}{given-family}
+\DeclareFieldFormat{title}{\fontspec[AutoFakeSlant=0.3]{FandolKai}#1}
+\DeclareFieldFormat{journaltitle}{\textbf{#1}} % 期刊名粗体
+% \DeclareFieldFormat[article]{volume}{\mkbibbold{#1}} % 卷号粗体
+\DeclareFieldFormat[article]{pages}{#1} % 页码无“pp.”前缀
+% \DeclareFieldFormat[article]{date}{\mkbibbold{#1}} % 年份粗体
+  \AtEveryBibitem{\clearfield{doi}} % 移除 DOI
+% \addbibresource{reference.bib}
+
+% 自定义参考文献格式
+% 自定义 journal+issuetitle 宏（移除页码的打印）
+\renewbibmacro*{journal+issuetitle}{%
+	\usebibmacro{journal}% 打印期刊名
+	\setunit*{\addcomma\space}% 期刊后加逗号
+	\iffieldundef{series}
+	{}
+	{\newunit
+		\printfield{series}%
+		\setunit{\addspace}}%
+	\printfield{volume}% 打印卷号
+	% 这里不再打印页码或添加冒号等标点
+}
+
+% 重新定义 title 宏：直接打印标题字段，不添加引号或其他标点
+\renewbibmacro*{title}{%
+	\printfield{title}% 使用已定义的 DeclareFieldFormat{title} 格式打印标题
+	\setunit{\newunit}% 确保在标题后正确添加新单位（如句点或空格）
+}
+
+% 移除“In:”前缀
+\renewbibmacro*{in:}{}
+
+
+% 重新定义 article 条目驱动程序
+\DeclareBibliographyDriver{article}{%
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	\usebibmacro{author/translator+others}% 打印作者
+	\setunit{\labelnamepunct}\newblock
+	\printfield{title}% 直接打印标题（不使用 usebibmacro 以避免引号）
+	\newunit
+	\usebibmacro{journal+issuetitle}% 打印期刊名和卷号
+	\setunit{\addcolon}% 在卷号后添加冒号
+	\printfield{pages}% 打印页码
+	\setunit{\addcomma\space}% 页码后添加逗号和空格
+	\usebibmacro{issue+date}% 打印 issue 和日期
+	\newunit\newblock
+	\printfield{note}% 打印 note，如果有
+	\newunit\newblock
+	\usebibmacro{addendum+pubstate}%
+	\usebibmacro{pageref}%
+	\usebibmacro{related}%
+	\usebibmacro{finentry}%
+}
