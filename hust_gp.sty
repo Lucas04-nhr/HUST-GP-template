@@ -24,6 +24,7 @@
 \usepackage{enumitem}
 \renewcommand{\labelenumii}{\theenumii)}
 \usepackage{tikz}
+\usepackage{hyperref}
 
 % Page Setup
 \pagestyle{fancy}
@@ -31,6 +32,25 @@
 \chead{华中科技大学毕业设计（论文）}
 \usepackage[fontsize=0.05\paperwidth]{draftwatermark}
 \SetWatermarkText{}
+
+% Hyperref setup
+\makeatletter
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    pdfcreator={\@author\ (content creator) ; Template: Lucas},
+    pdfproducer={XeLaTeX in TinyTeX using TeX Live 2025 with template created by Lucas},
+    pdfsubject={华中科技大学毕业设计（论文)},
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    filecolor=black,
+    pdfborder={0 0 0},
+  }%
+}
+\makeatother
 
 % Define Subtitle layout
 \makeatletter
@@ -125,8 +145,29 @@
 % \setmainfont{Noto Serif}
 % \setCJKmainfont{Noto Serif SC}
 \setCJKsansfont{FandolHei}[AutoFakeSlant=0.3]
+\newCJKfontfamily\CJKsf{FandolHei}[AutoFakeSlant=0.3]
 \setmonofont{Maple Mono NF CN}[Contextuals=Alternate]
 
+% Define new font sizes
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont} % 初号
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont} % 小初号
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont} % 一号
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont} % 二号
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont} % 小二号
+\newcommand{\sanhao}{\fontsize{16pt}{\baselineskip}\selectfont} % 三号
+\newcommand{\xiaosanhao}{\fontsize{14pt}{\baselineskip}\selectfont} % 小三号
+\newcommand{\sihao}{\fontsize{12pt}{\baselineskip}\selectfont} % 四号
+\newcommand{\xiaosihao}{\fontsize{10.5pt}{\baselineskip}\selectfont} % 小四号
+\newcommand{\wuhao}{\fontsize{9pt}{\baselineskip}\selectfont} % 五号
+\newcommand{\xiaowuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont} % 小五号
+
+% Make \xiaosihao the document's normalsize so all body text defaults to it
+\makeatletter
+\renewcommand\normalsize{%
+  \xiaosihao
+}
+\AtBeginDocument{\normalsize}
+\makeatother
 
 % Add custom command
 \newcommand{\lineB}{\begin{center}\rule{\linewidth}{0.5pt}\end{center}}
@@ -146,3 +187,46 @@
 % Change bib style
 % Biblography
 \usepackage{bib}
+
+% Redefine maketitle for cover page
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\CJKsf\erhao\textsf{\@title}\par}
+  \end{center}
+}
+\makeatother
+
+% Add subtitle command
+\makeatletter
+\newcommand{\makesubtitle}{%
+  \begingroup
+  \@ifundefined{@subtitle}{%
+    % no subtitle defined; do nothing
+  }{%
+    \begin{center}
+      {\CJKsf\sanhao\textsf{\@subtitle}\par}
+    \end{center}
+  }%
+  \endgroup
+}
+\makeatother
+
+% Redefine table of contents style
+\makeatletter
+\renewcommand{\tableofcontents}{%
+  \section*{\centering\CJKsf\xiaoerhao 目　　录\@mkboth{目录}{目录}}%
+  \@starttoc{toc}%
+}
+\makeatother
+
+
+% Redefine section title style
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{1.5\baselineskip}{1\baselineskip}{\centering\CJKsf\xiaoerhao\bfseries}}
+
+% Redefine section numbering style
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\makeatother

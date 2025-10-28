@@ -9,9 +9,10 @@
 % \geometry{a4paper,left=2.8cm,right=2.8cm,top=3cm,bottom=2.5cm}
 \geometry{b5paper,left=1.4cm,right=1.4cm,top=2.3cm,bottom=2cm}
 
-
-\title{\oldincludegraphics[width=0.4\textwidth]{fig/logo.png}  \\ \bigskip \Huge\textbf{本科毕业设计[论文]}}
-\author{}
+% Rename your document info here
+\title{标题}
+\subtitle{副标题}
+\author{作者}
 \date{}
 
 \begin{document}
@@ -28,6 +29,52 @@
 	\setcounter{page}{1}
 	\pagenumbering{arabic}
 
+	\section{绪论}
+
+	这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论这里是绪论
+
+	\section{章节 1}
+
+	这里是章节 1 的内容。This is section 1 content.这里是章节 1 的内容。This is section 1 content.这里是章节 1 的内容。This is section 1 content.这里是章节 1 的内容。This is section 1 content.这里是章节 1 的内容。This is section 1 content.这里是章节 1 的内容。This is section 1 content.这里是章节 1 的内容。This is section 1 content.这里是章节 1 的内容。This is section 1 content.这里是章节 1 的内容。This is section 1 content.这里是章节 1 的内容。This is section 1 content.\cite{test1}
+
+	\section{章节 2}
+
+	这里是章节 2 的内容。This is section 2 content.这里是章节 2 的内容。This is section 2 content.这里是章节 2 的内容。This is section 2 content.这里是章节 2 的内容。This is section 2 content.这里是章节 2 的内容。This is section 2 content.这里是章节 2 的内容。This is section 2 content.这里是章节 2 的内容。This is section 2 content.这里是章节 2 的内容。This is section 2 content.这里是章节 2 的内容。This is section 2 content.这里是章节 2 的内容。This is section 2 content.\cite{test2}
+	
+		\subsection{小节 2.1}
+
+			这里是小节 2.1 的内容。This is subsection 2.1 content.这里是小节 2.1 的内容。This is subsection 2.1 content.这里是小节 2.1 的内容。This is subsection 2.1 content.这里是小节 2.1 的内容。This is subsection 2.1 content.这里是小节 2.1 的内容。This is subsection 2.1 content.这里是小节 2.1 的内容。$\sum_{i=1}^{n}n = \dfrac{n \times \left(1 + n\right)}{2}$This is subsection 2.1 content.这里是小节 2.1 的内容。This is subsection 2.1 content.这里是小节 2.1 的内容。This is subsection 2.1 content.这里是小节 2.1 的内容。This is subsection 2.1 content.这里是小节 2.1 的内容。This is subsection 2.1 content.\cite{test1}
+
+			$$
+				\begin{aligned}
+					E & = mc^2 \\
+					F & = ma \\
+					V & = IR
+				\end{aligned}
+			$$
+
+	\section{章节 3}
+
+	\begin{figure}[htbp]
+		\centering
+		\mygraphics{fig/logo.png}
+		\piccncaption{示例图片}
+		\label{fig:example}
+	\end{figure}
+
+	\begin{table}[htbp]
+		\centering
+		\tbcncaption{示例表格}
+		\begin{tabular}{ccc}
+			\toprule
+			项目 & 数值1 & 数值2 \\
+			\midrule
+			A & 10 & 20 \\
+			B & 30 & 40 \\
+			\bottomrule
+		\end{tabular}
+		\label{tab:example}
+	\end{table}
 
 	\newpage
 	\printbibliography
