@@ -165,7 +165,7 @@ return seq[:n]
 在编辑器中打开 `.latexmkrc` 文件，确保其中的环境变量路径配置正确，将 `'$YOUR_CUSTOM_FILE_PATH'` 替换为你本地安装 `pygments` 以及 `minted` 的路径，否则可能会在有代码插入时出现问题：
 
 ```perl
-$ENV{'PATH'} = '~/Developer/miniconda3/bin' . $ENV{'PATH'};
+$ENV{'PATH'} = '~/Developer/miniconda3/bin:' . $ENV{'PATH'};
 ```
 
 #### 编译命令
