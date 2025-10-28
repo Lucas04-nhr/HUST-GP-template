@@ -268,20 +268,24 @@
 % 重新定义章节编号格式，确保编号后有适当的间距
 \renewcommand{\numberline}[1]{%
   \ifx\relax#1\relax%
-    % 无编号的情况
+    % 无编号的情况（如\section*生成的目录项）
   \else%
-    \@tempdima\@tempdimb
-    \begingroup
-      \def\@tempa{#1}%
-      \def\@tempb{\thesection.}%
-      \ifx\@tempa\@tempb
-        % 一级标题：编号后空3个中文字符
-        #1\hspace{3em}%
-      \else
-        % 二、三级标题：编号后空2个中文字符
-        #1\hspace{2em}%
-      \fi
-    \endgroup
+    \if\relax\detokenize{#1}\relax%
+      % 空编号的情况（如使用\addcontentsline添加的无编号章节）
+    \else%
+      \@tempdima\@tempdimb
+      \begingroup
+        \def\@tempa{#1}%
+        \def\@tempb{\thesection.}%
+        \ifx\@tempa\@tempb
+          % 一级标题：编号后空3个中文字符
+          #1\hspace{3em}%
+        \else
+          % 二、三级标题：编号后空2个中文字符
+          #1\hspace{2em}%
+        \fi
+      \endgroup
+    \fi%
   \fi
 }
 \makeatother
@@ -290,6 +294,12 @@
 % Redefine section title style
 \makeatletter
 \renewcommand{\section}{\@startsection{section}{1}{0pt}{1.5\baselineskip}{1\baselineskip}{\centering\CJKsf\xiaoerhao\bfseries}}
+
+% Define starred section command that adds to TOC without numbering
+\newcommand{\sectionstar}[1]{%
+  \section*{#1}%
+  \addcontentsline{toc}{section}{#1}%
+}
 
 % Redefine section numbering style
 \renewcommand{\thesection}{\arabic{section}}
