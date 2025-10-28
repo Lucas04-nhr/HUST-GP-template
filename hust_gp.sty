@@ -183,7 +183,10 @@
 \let\oldprintbibliography\printbibliography
 \renewcommand{\printbibliography}[1][]{%
   \sectionstar{参考文献}%
-  \oldprintbibliography[heading=none,#1]%
+  \begingroup
+    \linespread{1}\selectfont
+    \oldprintbibliography[heading=none,#1]%
+  \endgroup
 }
 \makeatother
 
