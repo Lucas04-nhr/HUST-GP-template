@@ -1,6 +1,5 @@
 # LaTeX intermediate and output files
 _minted
-*.pdf
 *.aux
 *.log
 *.out
