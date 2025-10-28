@@ -11,6 +11,7 @@ _minted
 *.bbl
 *.blg
 *.bcf
+*.xdv
 
 # macOS specific files
 .DS_Store
@@ -19,3 +20,6 @@ Thumbs.db
 
 # Backup files
 *.bak
+
+# Code Settings
+.vscode/
