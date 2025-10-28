@@ -94,18 +94,11 @@
 \newcommand{\mygraphicssubsubfig}[1]{\includegraphics[width=0.2\textwidth,height=\textheight,keepaspectratio]{#1}}
 
 % Define Figure Caption Style
-\newcommand{\piccncaption}[1]{%
+\newcommand{\piccaption}[1]{%
   \addtocounter{figure}{1}
   \small
   \begin{center}
-    \textbf{图 \thefigure:} #1
-  \end{center}
-}
-
-\newcommand{\picencaption}[1]{%
-  \small
-  \begin{center}
-    \textbf{Figure \thefigure:} #1
+    \textbf{图 \thefigure　} #1
   \end{center}
 }
 
@@ -117,25 +110,22 @@
 }
 
 % Define Table Caption Style
-\newcommand{\tbcncaption}[1]{%
+\newcommand{\tbcaption}[1]{%
   \addtocounter{table}{1}
   \small
   \begin{center}
-    \textbf{表 \thetable:} #1
-  \end{center}
-}
-
-\newcommand{\tbencaption}[1]{%
-  \small
-  \begin{center}
-    \textbf{Table \thetable:} #1
+    \textbf{表 \thetable　} #1
   \end{center}
 }
 
 % Change CTEX numbering
-\renewcommand{\thesection}{\chinese{section}.}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}-\arabic{table}}
+
+\makeatletter
+\@addtoreset{figure}{section}
+\@addtoreset{table}{section}
+\makeatother
 
 \renewcommand{\bfdefault}{bx}
 
@@ -216,7 +206,83 @@
 \makeatletter
 \renewcommand{\tableofcontents}{%
   \section*{\centering\CJKsf\xiaoerhao 目　　录\@mkboth{目录}{目录}}%
+  % Set toc formatting
+  \begingroup
+  \xiaosihao % 设置字号为小四号
   \@starttoc{toc}%
+  \endgroup
+}
+
+% Customize TOC entries formatting
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries % 加粗
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill % 使用……填充
+      \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+
+\renewcommand*\l@subsection[2]{%
+  \ifnum \c@tocdepth >1
+    \addpenalty\@secpenalty
+    \setlength\@tempdima{2.3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode % 不加粗
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill
+      \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+
+\renewcommand*\l@subsubsection[2]{%
+  \ifnum \c@tocdepth >2
+    \addpenalty\@secpenalty
+    \setlength\@tempdima{3.2em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill
+      \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+
+% 重新定义章节编号格式，确保编号后有适当的间距
+\renewcommand{\numberline}[1]{%
+  \ifx\relax#1\relax%
+    % 无编号的情况
+  \else%
+    \@tempdima\@tempdimb
+    \begingroup
+      \def\@tempa{#1}%
+      \def\@tempb{\thesection.}%
+      \ifx\@tempa\@tempb
+        % 一级标题：编号后空3个中文字符
+        #1\hspace{3em}%
+      \else
+        % 二、三级标题：编号后空2个中文字符
+        #1\hspace{2em}%
+      \fi
+    \endgroup
+  \fi
 }
 \makeatother
 
@@ -226,7 +292,20 @@
 \renewcommand{\section}{\@startsection{section}{1}{0pt}{1.5\baselineskip}{1\baselineskip}{\centering\CJKsf\xiaoerhao\bfseries}}
 
 % Redefine section numbering style
-\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\makeatother
+
+% Redefine cite style
+% Superscript numeric citations without additional packages
+\makeatletter
+% Store original cite command
+\let\@oldcite\cite
+% Redefine cite to produce superscript
+\renewcommand{\cite}[1]{\textsuperscript{\@oldcite{#1}}}
+% Remove brackets from cite output and format properly
+\renewcommand{\@cite}[2]{#1\if@tempswa , #2\fi}
+% Ensure bibliography labels use brackets
+\renewcommand{\@biblabel}[1]{[#1]}
 \makeatother
