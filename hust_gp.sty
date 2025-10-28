@@ -25,6 +25,7 @@
 \renewcommand{\labelenumii}{\theenumii)}
 \usepackage{tikz}
 \usepackage{hyperref}
+\usepackage{bib}
 
 % Page Setup
 \pagestyle{fancy}
@@ -173,22 +174,6 @@
 	breakanywhere=true,
 	fontsize=\small
 	}
-
-% Change bib style
-% Biblography
-\usepackage{bib}
-
-% Redefine printbibliography to add section title
-\makeatletter
-\let\oldprintbibliography\printbibliography
-\renewcommand{\printbibliography}[1][]{%
-  \sectionstar{参考文献}%
-  \begingroup
-    \linespread{1}\selectfont
-    \oldprintbibliography[heading=none,#1]%
-  \endgroup
-}
-\makeatother
 
 % Redefine maketitle for cover page
 \makeatletter
