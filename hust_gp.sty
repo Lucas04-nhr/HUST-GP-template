@@ -178,6 +178,15 @@
 % Biblography
 \usepackage{bib}
 
+% Redefine printbibliography to add section title
+\makeatletter
+\let\oldprintbibliography\printbibliography
+\renewcommand{\printbibliography}[1][]{%
+  \sectionstar{参考文献}%
+  \oldprintbibliography[heading=none,#1]%
+}
+\makeatother
+
 % Redefine maketitle for cover page
 \makeatletter
 \renewcommand{\maketitle}{%

@@ -3,7 +3,7 @@
 \usepackage[UTF8]{ctex}
 \usepackage[utf8]{inputenc}
 \usepackage{hust_gp}
-\bibliography{reference.bib}
+\addbibresource{reference.bib}
 \pagestyle{fancy}
 \cfoot{\thepage}
 % \geometry{a4paper,left=2.8cm,right=2.8cm,top=3cm,bottom=2.5cm}
@@ -34,13 +34,13 @@
 
 	\newpage
 	\setcounter{page}{1}
-	\tableofcontents
-
-	\newpage
 	\include{cnabstract}
 
 	\newpage
 	\include{enabstract}
+
+	\newpage
+	\tableofcontents
 
 	\newpage
 	\setcounter{page}{1}
