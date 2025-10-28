@@ -16,11 +16,11 @@
 ### 先决条件
 
 - 安装 $\LaTeX$ 发行版（推荐使用由 Yihui Xie 维护的 [TinyTeX](https://yihui.org/tinytex/)）。
-- 安装 $\LaTeX$ 编辑器（推荐使用 [TeX Studio](https://www.texstudio.org/)）。
-- 确保系统中安装了必要的字体（如 SimSun、SimHei 等）。
+- 安装 $\LaTeX$ 编辑器（理论上任何文本编辑器都可以对文件进行编辑）。
+- 安装必要的字体（如 SimSun、SimHei 等）。
 
 > [!TIP]
-> - 本人使用 macOS 系统的 TeX Studio 作为编辑器，TinyTeX 附带的 XeLaTeX 引擎进行编译。这两个工具都是跨平台的，理论上可以在 Windows 和 Linux 系统上使用。
+> - 本人使用 macOS 系统的 VS Code 作为编辑器，通过 TinyTeX 附带的 XeLaTeX 引擎利用 `latexmk` 进行更自动化的编译。这两个工具都是跨平台的，理论上可以在 Windows 和 Linux 系统上使用。
 > - 根据学院讲座的模板，论文中可能使用到的字体有宋体(SimSun/FandolSong)、黑体(SimHei/FandolHei)等，其中 [Fandol 系列字体](https://ctan.org/tex-archive/fonts/fandol)是 CTAN 官方的默认字体，考虑到生信专业大部分干实验可能需要插入代码，模板中也附带了等宽字体 [Maple Mono NF CN](https://github.com/Subframe7536/maple-font) 的支持，推荐安装上述所有字体以确保论文编译效果最佳。
 
 ### 下载模板

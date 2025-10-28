@@ -14,7 +14,7 @@ $silent = 0;
 $force_mode = 0;
 
 # Ensure miniconda bin is on PATH for runtime tools (e.g., minted executable, pygmentize)
-$ENV{'PATH'} = '/Users/lucas/Developer/miniconda3/bin:' . $ENV{'PATH'};
+$ENV{'PATH'} = '$YOUR_CUSTOM_FILE_PATH' . $ENV{'PATH'};
 
 # Clean up common aux files (including biblatex)
 $clean_ext .= ' %R.bbl %R.bcf %R.run.xml %R.blg %R.fls %R.fdb_latexmk';
