@@ -21,6 +21,7 @@
 
 > [!TIP]
 > - 本人使用 macOS 系统的 VS Code 作为编辑器，通过 TinyTeX 附带的 XeLaTeX 引擎利用 `latexmk` 进行更自动化的编译。这两个工具都是跨平台的，理论上可以在 Windows 和 Linux 系统上使用。
+> - 如果你不想配置环境，也可以将模板上传至 [Overleaf](https://www.overleaf.com/) 或 [FlyLaTeX](https://www.flylatex.cn/) 等在线 $\LaTeX$ 编辑器中进行编辑和编译。学校提供了 FlyLaTeX 编辑器的高级版功能（协作、历史版本等），使用统一身份认证登录后即可免费使用。
 > - 根据学院讲座的模板，论文中可能使用到的字体有宋体(SimSun/FandolSong)、黑体(SimHei/FandolHei)等，其中 [Fandol 系列字体](https://ctan.org/tex-archive/fonts/fandol)是 CTAN 官方的默认字体，考虑到生信专业大部分干实验可能需要插入代码，模板中也附带了等宽字体 [Maple Mono NF CN](https://github.com/Subframe7536/maple-font) 的支持，推荐安装上述所有字体以确保论文编译效果最佳。
 
 ### 下载模板
@@ -47,6 +48,7 @@
 - `cover.tex` 文件包含封面部分，请将个人信息部分修改为正确的内容。
 
 > [!CAUTION]
+> - 由于在线编辑器的局限性，可能无法使用 `minted` 宏包进行代码高亮显示，特殊代码框样式不受影响。
 > - 论文的标题及副标题请在 `sample.tex` 文件的`\begin{document}`之前的对应部分进行修改，会自动被引用到封面和标题页中。
 > - 请确保在编辑过程中不要更改模板中的命令和环境定义，除非你非常清楚自己在做什么，否则可能会导致编译错误或排版问题。
 
