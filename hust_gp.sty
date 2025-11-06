@@ -21,6 +21,7 @@
 \usepackage{wasysym}
 \usepackage{fontspec}
 \usepackage{xeCJK}
+\usepackage{chngcntr}
 \usepackage{enumitem}
 \renewcommand{\labelenumii}{\theenumii)}
 \usepackage{tikz}
@@ -30,9 +31,19 @@
 % Page Setup
 \pagestyle{fancy}
 \geometry{a4paper,left=2.8cm,right=2.8cm,top=3cm,bottom=2.5cm}
-\chead{华中科技大学毕业设计（论文）}
 \usepackage[fontsize=0.05\paperwidth]{draftwatermark}
 \SetWatermarkText{}
+
+% Clear default fancyhdr fields and remove left/right running headings
+\fancyhf{}
+\fancyhead[L]{}
+\fancyhead[R]{}
+\fancyhead[C]{华中科技大学毕业设计（论文）}
+\cfoot{\thepage}
+
+% Ensure equations are numbered sequentially across the whole document
+\counterwithout{equation}{section}
+\renewcommand{\theequation}{\arabic{equation}}
 
 % Hyperref setup
 \makeatletter
