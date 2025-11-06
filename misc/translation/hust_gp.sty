@@ -1,0 +1,329 @@
+% Include the packages
+\usepackage[UTF8]{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage{titling}
+\usepackage{subfig}
+\usepackage{enumerate}
+% \usepackage[graphicx]{realboxes}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{graphics}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{chngcntr}
+\usepackage{enumitem}
+\renewcommand{\labelenumii}{\theenumii)}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{bib}
+
+% Page Setup
+\pagestyle{fancy}
+\geometry{a4paper,left=2.8cm,right=2.8cm,top=3cm,bottom=2.5cm}
+\usepackage[fontsize=0.05\paperwidth]{draftwatermark}
+\SetWatermarkText{}
+
+% Clear default fancyhdr fields and remove left/right running headings
+\fancyhf{}
+\fancyhead[L]{}
+\fancyhead[R]{}
+\fancyhead[C]{华中科技大学毕业设计（论文）}
+\cfoot{\thepage}
+
+% Ensure equations are numbered sequentially across the whole document
+\counterwithout{equation}{section}
+\renewcommand{\theequation}{\arabic{equation}}
+
+% Hyperref setup
+\makeatletter
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    pdfcreator={\@author\ (content creator) ; Template: Lucas},
+    pdfproducer={XeLaTeX in TinyTeX using TeX Live 2025 with template created by Lucas},
+    pdfsubject={华中科技大学毕业设计（论文)},
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    filecolor=black,
+    pdfborder={0 0 0},
+  }%
+}
+\makeatother
+
+% Define Subtitle layout
+\makeatletter
+\newcommand{\subtitle}[1]{%
+	\gdef\@subtitle{#1}%
+	\posttitle{%
+		\par\vspace{0.5em}%
+		{\centering\Large #1 \par}%
+		\vspace{0.5em}}%
+}
+\makeatother
+
+% Define TikZ block styles
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+\tikzstyle{process} = [thick, rectangle, rounded corners, minimum width=1.5cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{edge} = [thick, rounded corners, draw, dashed, rectangle, inner sep=10pt]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{twowayarrow} = [thick,<->,>=stealth]
+
+
+% Set default figure placement to center
+\let\oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{
+    \begin{center}
+      \oldincludegraphics[#1]{#2}
+    \end{center}
+  }
+
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\newcommand{\mygraphics}[1]{\includegraphics[width=0.6\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicssmall}[1]{\includegraphics[width=0.4\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicstwocols}[1]{\includegraphics[width=0.25\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicsthreecols}[1]{\includegraphics[width=0.15\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicsfourcols}[1]{\includegraphics[width=0.1\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicssubfig}[1]{\includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{#1}}
+\newcommand{\mygraphicssubsubfig}[1]{\includegraphics[width=0.2\textwidth,height=\textheight,keepaspectratio]{#1}}
+
+% Define Figure Caption Style
+\newcommand{\piccaption}[1]{%
+  \addtocounter{figure}{1}
+  \small
+  \begin{center}
+    \textbf{图 \thefigure　} #1
+  \end{center}
+}
+
+\newcommand{\txtcaption}[1]{%
+  \small
+  \begin{center}
+    #1
+  \end{center}
+}
+
+% Define Table Caption Style
+\newcommand{\tbcaption}[1]{%
+  \addtocounter{table}{1}
+  \small
+  \begin{center}
+    \textbf{表 \thetable　} #1
+  \end{center}
+}
+
+% Change CTEX numbering
+\renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}-\arabic{table}}
+
+\makeatletter
+\@addtoreset{figure}{section}
+\@addtoreset{table}{section}
+\makeatother
+
+\renewcommand{\bfdefault}{bx}
+
+% Change font
+\setmainfont{Times New Roman}[AutoFakeSlant=0.3]
+\setCJKmainfont{FandolSong.otf}[AutoFakeSlant=0.3, Path=fonts/, BoldFont=FandolSong-bold.otf]
+% \setmainfont{Noto Serif}
+% \setCJKmainfont{Noto Serif SC}
+\setCJKsansfont{FandolHei.otf}[AutoFakeSlant=0.3, Path=fonts/, Path=fonts/, BoldFont=FandolHei-bold.otf]
+\newCJKfontfamily\CJKsf{FandolHei.otf}[AutoFakeSlant=0.3, Path=fonts/, BoldFont=FandolHei-bold.otf]
+\setmonofont{MapleMono.ttf}[Contextuals=Alternate, Path=fonts/]
+
+% Define new font sizes
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont} % 初号
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont} % 小初号
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont} % 一号
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont} % 二号
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont} % 小二号
+\newcommand{\sanhao}{\fontsize{16pt}{\baselineskip}\selectfont} % 三号
+\newcommand{\xiaosanhao}{\fontsize{14pt}{\baselineskip}\selectfont} % 小三号
+\newcommand{\sihao}{\fontsize{12pt}{\baselineskip}\selectfont} % 四号
+\newcommand{\xiaosihao}{\fontsize{10.5pt}{\baselineskip}\selectfont} % 小四号
+\newcommand{\wuhao}{\fontsize{9pt}{\baselineskip}\selectfont} % 五号
+\newcommand{\xiaowuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont} % 小五号
+
+% Make \xiaosihao the document's normalsize so all body text defaults to it
+\makeatletter
+\renewcommand\normalsize{%
+  \xiaosihao
+}
+\AtBeginDocument{\normalsize}
+\makeatother
+
+% Add custom command
+\newcommand{\lineB}{\begin{center}\rule{\linewidth}{0.5pt}\end{center}}
+
+% minted style
+\renewcommand{\theFancyVerbLine}{\ttfamily\small\arabic{FancyVerbLine}}
+\setminted{
+	tabsize=2,
+	bgcolor=gray!10,
+	linenos,
+	numbersep=5pt,
+	breaklines,
+	breakanywhere=true,
+	fontsize=\small
+	}
+
+% Redefine maketitle for cover page
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\CJKsf\erhao\textsf{\@title}\par}
+  \end{center}
+}
+\makeatother
+
+% Add subtitle command
+\makeatletter
+\newcommand{\makesubtitle}{%
+  \begingroup
+  \@ifundefined{@subtitle}{%
+    % no subtitle defined; do nothing
+  }{%
+    \begin{center}
+      {\CJKsf\sanhao\textsf{\@subtitle}\par}
+    \end{center}
+  }%
+  \endgroup
+}
+\makeatother
+
+% Redefine table of contents style
+\makeatletter
+\renewcommand{\tableofcontents}{%
+  \section*{\centering\CJKsf\xiaoerhao 目　　录\@mkboth{目录}{目录}}%
+  % Set toc formatting
+  \begingroup
+  \xiaosihao % 设置字号为小四号
+  \@starttoc{toc}%
+  \endgroup
+}
+
+% Customize TOC entries formatting
+\renewcommand*\l@section[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries % 加粗
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill % 使用……填充
+      \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+
+\renewcommand*\l@subsection[2]{%
+  \ifnum \c@tocdepth >1
+    \addpenalty\@secpenalty
+    \setlength\@tempdima{2.3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode % 不加粗
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill
+      \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+
+\renewcommand*\l@subsubsection[2]{%
+  \ifnum \c@tocdepth >2
+    \addpenalty\@secpenalty
+    \setlength\@tempdima{3.2em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill
+      \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+
+% 重新定义章节编号格式，确保编号后有适当的间距
+\renewcommand{\numberline}[1]{%
+  \ifx\relax#1\relax%
+    % 无编号的情况（如\section*生成的目录项）
+  \else%
+    \if\relax\detokenize{#1}\relax%
+      % 空编号的情况（如使用\addcontentsline添加的无编号章节）
+    \else%
+      \@tempdima\@tempdimb
+      \begingroup
+        \def\@tempa{#1}%
+        \def\@tempb{\thesection.}%
+        \ifx\@tempa\@tempb
+          % 一级标题：编号后空3个中文字符
+          #1\hspace{3em}%
+        \else
+          % 二、三级标题：编号后空2个中文字符
+          #1\hspace{2em}%
+        \fi
+      \endgroup
+    \fi%
+  \fi
+}
+\makeatother
+
+
+% Redefine section title style
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{1.5\baselineskip}{1\baselineskip}{\centering\CJKsf\xiaoerhao\bfseries}}
+
+% Define starred section command that adds to TOC without numbering
+\newcommand{\sectionstar}[1]{%
+  \section*{#1}%
+  \addcontentsline{toc}{section}{#1}%
+}
+
+% Redefine section numbering style
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\makeatother
+
+% Redefine cite style
+% Superscript numeric citations without additional packages
+\makeatletter
+% Store original cite command
+\let\@oldcite\cite
+% Redefine cite to produce superscript
+\renewcommand{\cite}[1]{\textsuperscript{\@oldcite{#1}}}
+% Remove brackets from cite output and format properly
+\renewcommand{\@cite}[2]{#1\if@tempswa , #2\fi}
+% Ensure bibliography labels use brackets
+\renewcommand{\@biblabel}[1]{[#1]}
+\makeatother
