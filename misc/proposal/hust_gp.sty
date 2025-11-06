@@ -41,10 +41,6 @@
 \fancyhead[C]{华中科技大学毕业设计（论文）参考文献译文}
 \cfoot{\thepage}
 
-% Ensure equations are numbered sequentially across the whole document
-\counterwithout{equation}{section}
-\renewcommand{\theequation}{\arabic{equation}}
-
 % Hyperref setup
 \makeatletter
 \AtBeginDocument{%
@@ -133,10 +129,12 @@
 % Change CTEX numbering
 \renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
 \renewcommand{\thetable}{\arabic{section}-\arabic{table}}
+\renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
 
 \makeatletter
 \@addtoreset{figure}{section}
 \@addtoreset{table}{section}
+\@addtoreset{equation}{section}
 \makeatother
 
 \renewcommand{\bfdefault}{bx}
@@ -163,7 +161,7 @@
 \newcommand{\wuhao}{\fontsize{9pt}{\baselineskip}\selectfont} % 五号
 \newcommand{\xiaowuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont} % 小五号
 
-% Make \xiaosihao the document's normalsize so all body text defaults to it
+% Make \wuhao the document's normalsize so all body text defaults to it
 \makeatletter
 \renewcommand\normalsize{%
   \wuhao

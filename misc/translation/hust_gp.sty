@@ -133,11 +133,15 @@
 % Change CTEX numbering
 \renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
 \renewcommand{\thetable}{\arabic{section}-\arabic{table}}
+\renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
 
 \makeatletter
 \@addtoreset{figure}{section}
 \@addtoreset{table}{section}
+\@addtoreset{equation}{section}
 \makeatother
+
+\renewcommand{\bfdefault}{bx}
 
 \renewcommand{\bfdefault}{bx}
 
