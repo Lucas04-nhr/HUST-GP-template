@@ -151,26 +151,27 @@
 % Define new font sizes
 \newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont} % 初号
 \newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont} % 小初号
-\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont} % 一号
-\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont} % 二号
+\newcommand{\yihao}{\fontsize{26pt}{\baselineskip}\selectfont} % 一号
+\newcommand{\xiaoyihao}{\fontsize{24pt}{\baselineskip}\selectfont} % 小一号
+\newcommand{\erhao}{\fontsize{22pt}{\baselineskip}\selectfont} % 二号
 \newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont} % 小二号
 \newcommand{\sanhao}{\fontsize{16pt}{\baselineskip}\selectfont} % 三号
-\newcommand{\xiaosanhao}{\fontsize{14pt}{\baselineskip}\selectfont} % 小三号
-\newcommand{\sihao}{\fontsize{12pt}{\baselineskip}\selectfont} % 四号
-\newcommand{\xiaosihao}{\fontsize{10.5pt}{\baselineskip}\selectfont} % 小四号
-\newcommand{\wuhao}{\fontsize{9pt}{\baselineskip}\selectfont} % 五号
-\newcommand{\xiaowuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont} % 小五号
+\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont} % 小三号
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont} % 四号
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont} % 小四号
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont} % 五号
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont} % 小五号
 
-% Make \wuhao the document's normalsize so all body text defaults to it
+% Make \xiaosihao the document's normalsize so all body text defaults to it
 \makeatletter
 \renewcommand\normalsize{%
-  \wuhao
+  \xiaosihao
 }
 \AtBeginDocument{\normalsize}
 \makeatother
 
 % Add custom command
-\newcommand{\lineB}{\begin{center}\rule{\linewidth}{0.5pt}\end{center}}
+\newcommand{\lineB}{\par\vspace*{0pt}\noindent\hrule width\linewidth height0.5pt\par\nobreak\vspace*{0pt}\nointerlineskip}
 
 % minted style
 \renewcommand{\theFancyVerbLine}{\ttfamily\small\arabic{FancyVerbLine}}
