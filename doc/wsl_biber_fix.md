@@ -121,7 +121,7 @@ xelatex sample.tex      # 参考文献正常显示
 ## 常见故障及排查建议
 
 - 如果 `biber` 命令不存在：检查 TinyTeX 是否正确安装，以及 `PATH` 是否包含 TinyTeX 的 `bin` 路径。可通过 `ls` 查看目录并在 ~/.bashrc 中添加 `PATH`。
-- 若 `xelatex` 报告缺少宏包，可在 R 控制台运行 tinytex::xelatex('sample.tex')，TinyTeX 会尝试自动下载并安装所需宏包；也可选择手动安装。更多维护说明（英文）：https://yihui.org/tinytex/#maintenance
+- 若 `xelatex` 报告缺少宏包，可在 R 控制台运行 tinytex::xelatex('sample.tex')，TinyTeX 会尝试自动下载并安装所需宏包；也可选择手动安装。更多[维护说明（英文）](https://yihui.org/tinytex/#maintenance)。
 - 如果 biber 报错但已安装：确认 `biber` 版本与 `biblatex backend` 配置匹配（通常使用 `biber` 而非 `bibtex`）。检查工作目录下的 `.bcf/.bib/.aux` 文件是否正常生成。
 - 如果使用 VSCode/TeXstudio 等编辑器：确认编辑器使用的 TeX 发行版是 WSL 中的 TinyTeX，或将编辑器配置为调用 WSL 中的命令。
 
