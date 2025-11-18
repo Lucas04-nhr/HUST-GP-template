@@ -12,7 +12,7 @@
 > - 本模板基于 $\LaTeX$ 制作，如需使用建议先行学习相关知识。
 > - 软件及字体的安装教程不在此赘述，可参考网络资源。
 > - 如果在生命学院大二开设的 R 语言课程中使用 R Markdown 编写过实验报告并且后期没有卸载过 TinyTeX，那么你已经具备了使用本模板的基本环境。
-> - 如果不确定是否具有基本环境，请参考 [Rapheal](https://github.com/chide-org) 提供的[windows上从0开始以解决biber缺失问题](wsl_biber_fix.md)
+> - 如果不确定是否具有基本环境，请参考 [Rapheal](https://github.com/chide-org)  提供的[Windows 简明教程（含 biber 问题修复）](./doc/wsl_biber_fix.md)
 
 ### 先决条件
 
@@ -253,7 +253,7 @@ latexmk sample.tex
 3. **图片无法正确显示**
    解决方法：请确保图片文件路径正确，并且图片格式被支持（如 PNG、JPEG、PDF 等），推荐使用 PDF 格式以获得最佳效果。
 4. **参考文献无法正确生成**  
-   解决方法：请确保已经正确安装了 BibTeX，并且在编译过程中没有遗漏运行 BibTeX 的步骤。使用 `latexmk` 命令可以自动处理这些步骤。或参考 [Rapheal](https://github.com/chide-org) 提供的[windows上从0开始以解决biber缺失问题](wsl_biber_fix.md)
+   解决方法：确保已安装 BibTeX，并在编译时正确执行参考文献相关的步骤（使用 `latexmk` 可自动完成）。如遇 Windows 平台上 biber 或相关工具缺失的问题，请参阅 [Rapheal](https://github.com/chide-org) 提供的[Windows 简明教程（含 biber 问题修复）](./doc/wsl_biber_fix.md)获取针对性的解决方法。
 5. **字体显示异常**  
    解决方法：请确保已经正确安装了所需的字体，并且在编译时使用了 XeLaTeX 引擎。
 6. **无法通过编译**  
