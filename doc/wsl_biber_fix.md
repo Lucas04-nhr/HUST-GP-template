@@ -1,8 +1,8 @@
-# Windows（WSL）+ TinyTeX：biber 问题快速修复指南（Windows 简明教程）
+# Windows（WSL）+ TinyTeX：`biber` 问题快速修复指南（Windows 简明教程）
 
 ## 概要
 
-使用本模板在 Windows（通过 WSL）上编译时，可能出现参考文献无法生成（无 .bbl、引用编号缺失、参考文献列表为空）的问题。通常原因是 biber 未安装或路径不可见。本文给出从零开始在 WSL（Ubuntu）中安装 TinyTeX 并确保 biber 可用的简明流程。
+使用本模板在 Windows（通过 WSL）上编译时，可能出现参考文献无法生成（无 `.bbl`、引用编号缺失、参考文献列表为空）的问题。通常原因是 biber 未安装或路径不可见。本文给出从零开始在 WSL（Ubuntu）中安装 TinyTeX 并确保 biber 可用的简明流程。
 
 > 说明：文中示例使用 sample.tex 作为演示用的主 .tex 文件；实际操作时请将其替换为你要编译的文件名（例如 mypaper.tex）。
 
@@ -17,7 +17,7 @@ xelatex sample.tex
 若仍无效，按下文完整流程操作（推荐在全新 WSL 环境中逐步执行）。
 
 ## 测试用例（在工作目录新建 sample.tex）
-下面的 sample.tex 将内嵌参考文献，便于测试 biber 是否正常工作。
+下面的 `sample.tex` 将内嵌参考文献，便于测试 biber 是否正常工作。
 
 ```tex
 % sample.tex
@@ -120,14 +120,14 @@ xelatex sample.tex      # 参考文献正常显示
 
 ## 常见故障及排查建议
 
-- 如果 biber 命令不存在：检查 TinyTeX 是否正确安装，以及 PATH 是否包含 TinyTeX 的 bin 路径。可通过 ls 查看目录并在 ~/.bashrc 中添加 PATH。
-- 若 xelatex 报告缺少宏包，可在 R 控制台运行 tinytex::xelatex('sample.tex')，TinyTeX 会尝试自动下载并安装所需宏包；也可选择手动安装。更多维护说明（英文）：https://yihui.org/tinytex/#maintenance
-- 如果 biber 报错但已安装：确认 biber 版本与 biblatex backend 配置匹配（通常使用 biber 而非 bibtex）。检查工作目录下的 .bcf/.bib/.aux 文件是否正常生成。
+- 如果 `biber` 命令不存在：检查 TinyTeX 是否正确安装，以及 `PATH` 是否包含 TinyTeX 的 `bin` 路径。可通过 `ls` 查看目录并在 ~/.bashrc 中添加 `PATH`。
+- 若 `xelatex` 报告缺少宏包，可在 R 控制台运行 tinytex::xelatex('sample.tex')，TinyTeX 会尝试自动下载并安装所需宏包；也可选择手动安装。更多维护说明（英文）：https://yihui.org/tinytex/#maintenance
+- 如果 biber 报错但已安装：确认 `biber` 版本与 `biblatex backend` 配置匹配（通常使用 `biber` 而非 `bibtex`）。检查工作目录下的 `.bcf/.bib/.aux` 文件是否正常生成。
 - 如果使用 VSCode/TeXstudio 等编辑器：确认编辑器使用的 TeX 发行版是 WSL 中的 TinyTeX，或将编辑器配置为调用 WSL 中的命令。
 
 ## 备注
 
-- 本文主要解决 biber 在 WSL/TinyTeX 环境中不可用的问题。其他编译问题请先尝试通过 R 的 tinytex 自动安装缺失宏包，再排查具体错误信息。
+- 本文主要解决 `biber` 在 WSL/TinyTeX 环境中不可用的问题。其他编译问题请先尝试通过 R 的 tinytex 自动安装缺失宏包，再排查具体错误信息。
 
 示例重试流程（快速参考）：
 ```bash
