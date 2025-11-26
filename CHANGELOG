@@ -1,4 +1,4 @@
-## v1.3.1 — 2025-11-12
+## v1.3.2 — 2025-11-26
 
 对比 v1.2.1 的变更摘要：
 
@@ -22,3 +22,5 @@
 ### 文档
 
 - 补充 README 使用说明（`README.md`）。
+- 增加对于 Windows 平台下 `biber` 相关问题的处理方案 (`doc/wsl_biber_fix.md`)。 @chide-org
+- 增加 `SUPPORTERS.md` 用于鸣谢贡献者和支持者。

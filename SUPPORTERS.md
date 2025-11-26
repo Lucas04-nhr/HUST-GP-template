@@ -6,7 +6,7 @@ I would like to extend my heartfelt gratitude to the following individuals and o
 
 ## Coders/提交过 PR 的朋友们
 
-- [Rapheal](https://github.com/chide.org)
+- [Rapheal](https://github.com/chide-org)
   - Provided a solution for `biber`-related issues on Windows platform and authored a [Concise Windows Tutorial (including biber issue fix)](./doc/wsl_biber_fix.md).
   - 提供了 Windows 平台下 `biber` 相关问题的解决方案，并编写了[Windows 简明教程（含 biber 问题修复）](./doc/wsl_biber_fix.md)。
 
