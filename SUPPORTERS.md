@@ -19,4 +19,5 @@ I would like to extend my heartfelt gratitude to the following individuals and o
 ---
 
 And lots of friends and family members who have encouraged and supported us along the way. Your support means a lot to me!
+
 还有许多在过程中给予我鼓励和支持的朋友和家人。你们的支持对我意义重大！
