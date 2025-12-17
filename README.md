@@ -2,6 +2,9 @@
 
 学校似乎只提供了 Word 格式的论文模板，然而 $\LaTeX$ 在排版学术论文方面有着显著优势，尤其是在需要插入大量图片、代码及表格的情况下。
 
+> [!NOTE]
+> 我还根据 liu-qilong/college-beamer 模板适配了一个适用于华中科技大学的 $\LaTeX$ 答辩幻灯片模板，感兴趣的同学可以前往查看：[HUST 答辩幻灯片 LaTeX 模板](https://github.com/liu-qilong/college-beamer/pull/33)。
+
 因此，我基于之前各类实验报告的模板，参考着学校要求，创建了一个基于 $\LaTeX$ 的本科毕业论文模板。
 
 ## 使用说明
