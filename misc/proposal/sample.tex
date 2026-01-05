@@ -23,24 +23,38 @@
   \setcounter{page}{1}
   \pagenumbering{arabic}
 
-  \section{绪论}
+  \section{引言}
+  123123\cite{test1}
 
-  \newpage
-  \section{章节 3}
+  \section{研究内容与目标}
+  342332342\cite{test2}
 
-  \begin{minted}[linenos,fontsize=\small,breaklines]{python}
-def fibonacci(n):
-  if n <= 0:
-    return []
-  seq = [0, 1]
-  while len(seq) < n:
-    seq.append(seq[-1] + seq[-2])
-  return seq[:n]
-  \end{minted}
+  \section{研究方法与技术路线}
 
+  \section{课题研究进度安排}
+  \begin{table}[htbp]
+    \tbcaption{课题研究进度安排表}
+    \centering
+    \begin{tabular}{>{\centering\arraybackslash}p{3cm} >{\centering\arraybackslash}p{1.5cm} >{\centering\arraybackslash}p{6cm}}
+      \toprule
+      \textbf{学期} & \textbf{周次} & \textbf{工作任务} \\
+      \midrule
+      \multirow{3}{*}{\begin{tabular}{@{}c@{}}2025-2026学年度 \\ 第一学期\end{tabular}} & 1-4 & 文献调研，确定研究方向 \\
+      \cline{2-3}
+      & 5-10 & 数据收集与预处理 \\
+      \cline{2-3}
+      & 11-16 & 方法设计与初步实验 \\
+      \midrule
+      \multirow{2}{*}{\begin{tabular}{@{}c@{}}2025-2026学年度 \\ 第二学期\end{tabular}} & 1-8 & 实验优化与结果分析 \\
+      \cline{2-3}
+      & 9-16 & 撰写论文与答辩准备 \\
+      \bottomrule
+    \end{tabular}
+    \label{tab:progress}
+  \end{table}
 
-  \newpage
-  \printbibliography[heading=bibintoc, title={参考文献}]
+  \section{主要参考文献}
+  \printbibliography[heading=none]
   % \bibliographystyle{unsrt}
   % \bibliography{reference}
 

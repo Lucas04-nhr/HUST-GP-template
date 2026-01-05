@@ -308,10 +308,16 @@
   \addcontentsline{toc}{section}{#1}%
 }
 
-% Redefine section numbering style
+% Redefine section numbering style with reduced spacing
 \renewcommand{\thesection}{\chinese{section}、}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+% Reduce space between section number and title
+\makeatletter
+\renewcommand*{\@seccntformat}[1]{%
+  \csname the#1\endcsname\hspace{0.3em}%
+}
 \makeatother
 
 % Redefine cite style
