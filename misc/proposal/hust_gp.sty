@@ -38,7 +38,7 @@
 \fancyhf{}
 \fancyhead[L]{}
 \fancyhead[R]{}
-\fancyhead[C]{华中科技大学毕业设计（论文）参考文献译文}
+\fancyhead[C]{华中科技大学毕业设计（论文）开题报告}
 \cfoot{\thepage}
 
 % Hyperref setup
@@ -49,7 +49,7 @@
     pdfauthor={\@author},
     pdfcreator={TeX Live 2025 with template created by Lucas},
     pdfproducer={XeLaTeX in TinyTeX with template created by Lucas},
-    pdfsubject={华中科技大学毕业设计（论文)参考文献译文本},
+    pdfsubject={华中科技大学毕业设计（论文）开题报告},
     colorlinks=true,
     linkcolor=black,
     citecolor=black,
@@ -189,7 +189,7 @@
 \makeatletter
 \renewcommand{\maketitle}{%
   \begin{center}
-    {\xiaosihao\textbf{\@title}\par}
+    \sanhao\textbf{题目：}\@title\par\@subtitle\par
   \end{center}
 }
 \makeatother
@@ -202,7 +202,7 @@
     % no subtitle defined; do nothing
   }{%
     \begin{center}
-      {\wuhao\textbf{\@subtitle}\par}
+      {\CJKsf\sanhao\textsf{\@subtitle}\par}
     \end{center}
   }%
   \endgroup
@@ -215,7 +215,7 @@
   \section*{\centering\CJKsf\xiaoerhao 目　　录\@mkboth{目录}{目录}}%
   % Set toc formatting
   \begingroup
-  \wuhao % 设置字号为五号
+  \xiaosihao % 设置字号为小四号
   \@starttoc{toc}%
   \endgroup
 }
@@ -300,13 +300,7 @@
 
 % Redefine section title style
 \makeatletter
-% Tighter spacing for \section and ensure consistent font size
-\renewcommand{\section}{\@startsection{section}{1}{0pt}{0.8\baselineskip}{0.4\baselineskip}{\wuhao\bfseries}}
-
-% Ensure \subsection and \subsubsection use the intended (五号) size and tighter spacing
-\renewcommand{\subsection}{\@startsection{subsection}{2}{0pt}{0.6\baselineskip}{0.2\baselineskip}{\wuhao\bfseries}}
-\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0pt}{0.4\baselineskip}{0.1\baselineskip}{\wuhao\bfseries}}
-\makeatother
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{0.2\baselineskip}{0.2\baselineskip}{\sihao\bfseries}}
 
 % Define starred section command that adds to TOC without numbering
 \newcommand{\sectionstar}[1]{%
@@ -315,9 +309,9 @@
 }
 
 % Redefine section numbering style
-\renewcommand{\thesection}{\arabic{section}.}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
-\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}
+\renewcommand{\thesection}{\chinese{section}、}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 \makeatother
 
 % Redefine cite style
