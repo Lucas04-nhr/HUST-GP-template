@@ -27,6 +27,7 @@
 \usepackage{tikz}
 \usepackage{hyperref}
 \usepackage{bib}
+\usepackage{caption}
 
 % Page Setup
 \pagestyle{fancy}
@@ -88,11 +89,7 @@
 
 % Set default figure placement to center
 \let\oldincludegraphics\includegraphics
-\renewcommand{\includegraphics}[2][]{
-    \begin{center}
-      \oldincludegraphics[#1]{#2}
-    \end{center}
-  }
+\renewcommand{\includegraphics}[2][]{\oldincludegraphics[#1]{#2}}
 
 % Scale images if necessary, so that they will not overflow the page
 % margins by default, and it is still possible to overwrite the defaults
@@ -106,12 +103,18 @@
 \newcommand{\mygraphicssubsubfig}[1]{\includegraphics[width=0.2\textwidth,height=\textheight,keepaspectratio]{#1}}
 
 % Define Figure Caption Style
+\DeclareCaptionLabelSeparator{quad}{\quad}
+\captionsetup{font=small,labelfont=bf,labelsep=quad,justification=centering}
+% subfig reference format: FigureNumber(a)
+\makeatletter
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\renewcommand{\p@subfigure}{\thefigure}
+\makeatother
+
+\captionsetup[subfloat]{font=small,labelformat=simple,labelsep=space,justification=centering}
+
 \newcommand{\piccaption}[1]{%
-  \addtocounter{figure}{1}
-  \small
-  \begin{center}
-    \textbf{图 \thefigure　} #1
-  \end{center}
+  \caption{#1}
 }
 
 \newcommand{\txtcaption}[1]{%
@@ -123,11 +126,7 @@
 
 % Define Table Caption Style
 \newcommand{\tbcaption}[1]{%
-  \addtocounter{table}{1}
-  \small
-  \begin{center}
-    \textbf{表 \thetable　} #1
-  \end{center}
+  \caption{#1}
 }
 
 % Change CTEX numbering
@@ -140,8 +139,6 @@
 \@addtoreset{table}{section}
 \@addtoreset{equation}{section}
 \makeatother
-
-\renewcommand{\bfdefault}{bx}
 
 \renewcommand{\bfdefault}{bx}
 

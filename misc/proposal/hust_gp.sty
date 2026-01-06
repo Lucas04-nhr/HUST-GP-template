@@ -27,6 +27,7 @@
 \usepackage{tikz}
 \usepackage{hyperref}
 \usepackage{bib}
+\usepackage{caption}
 
 % Page Setup
 \pagestyle{fancy}
@@ -102,12 +103,18 @@
 \newcommand{\mygraphicssubsubfig}[1]{\includegraphics[width=0.2\textwidth,height=\textheight,keepaspectratio]{#1}}
 
 % Define Figure Caption Style
+\DeclareCaptionLabelSeparator{quad}{\quad}
+\captionsetup{font=small,labelfont=bf,labelsep=quad,justification=centering}
+% subfig reference format: FigureNumber(a)
+\makeatletter
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\renewcommand{\p@subfigure}{\thefigure}
+\makeatother
+
+\captionsetup[subfloat]{font=small,labelformat=simple,labelsep=space,justification=centering}
+
 \newcommand{\piccaption}[1]{%
-  \addtocounter{figure}{1}
-  \small
-  \begin{center}
-    \textbf{图 \thefigure　} #1
-  \end{center}
+  \caption{#1}
 }
 
 \newcommand{\txtcaption}[1]{%
@@ -119,11 +126,7 @@
 
 % Define Table Caption Style
 \newcommand{\tbcaption}[1]{%
-  \addtocounter{table}{1}
-  \small
-  \begin{center}
-    \textbf{表 \thetable　} #1
-  \end{center}
+  \caption{#1}
 }
 
 % Change CTEX numbering
@@ -189,7 +192,10 @@
 \makeatletter
 \renewcommand{\maketitle}{%
   \begin{center}
-    \sanhao\textbf{题目：}\@title\par\@subtitle\par
+    \sanhao
+    \begin{tabular}{p{2.8cm} >{\centering\arraybackslash}p{10cm}}
+      \makebox[2.8cm][s]{\textbf{题目}} & \begin{tabular}{@{}c@{}}\@title \\ \@subtitle\end{tabular} \\ \cline{2-2}
+    \end{tabular}
   \end{center}
 }
 \makeatother
